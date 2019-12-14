@@ -1,27 +1,27 @@
-<templates>
-    <div class="user-card">
-        <img :src="avatar" class="user-photo">
-        <p class="user-nickname">{{nickname}}</p>
-        <p class="user-name">
-            Иванов Иван<br>
-            Иванович
-        </p>
-        <hr>
-        <p class="user-info-item">
-            <img src="img/location.png">
-            {{addr}}
-        </p>
-        <p class="user-info-item">
-            <img src="img/mail.png">
-            {{user.email}}
-        </p>
-        <p class="user-info-item">
-            <img src="img/phone.png">
-            {{user.phone}}
-        </p>
-    </div>
-</templates>
-
+<template>
+<div class="user-card">
+    <img src="/img/70.jpg" class="user-photo">
+    <p class="user-nickname">{{nickname}}</p>
+    <p class="user-name">
+        Иван<br>
+        Иванович
+    </p>
+    <hr>
+    <p class="user-info-item">
+        <img src="/img/location.png">
+        {{addr}}
+    </p>
+    <p class="user-info-item">
+        <img src="/img/mail.png">
+        {{user.email}}
+    </p>
+    <p class="user-info-item">
+        <img src="/img/phone.png">
+        {{user.phone}}
+    </p>
+</div>
+</template>
+<style>
 .user-card {
     width: 300px;
     padding: 20px;
@@ -66,20 +66,17 @@
     vertical-align: middle;
     margin-right: 5px;
 }
-
+</style>
 <script>
 export default {
-    props: ['user']
+    props: ['user'],
     computed:{
         addr(){
             let location = this.user.location
-            return location.city  + ', ' + location.street.name + ' ' + location.street.number
+            return location.city + ', ' + location.street.name + ' ' + location.street.number
         },
         nickname(){
             return this.user.login.username
-        },
-        avatar(){
-            return  this.picture.
         }
     }
 }

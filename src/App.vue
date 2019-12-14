@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <user-card v-if="user" :user="user"> </user-card>
+    <user-card v-for = "user in users" :user="user" :key = "user.email"> </user-card>
   </div>
 </template>
 
@@ -10,9 +10,9 @@ import UserCard from './components/UserCard'
 export default {
   data(){
     return{
-      user: null
+      users: []
     }
-  }
+  },
   name: 'app',
   components: {
     UserCard
@@ -20,7 +20,7 @@ export default {
   mounted(){
     this.axios.get('https://randomuser.me/api').then((response)=>{
       console.log('response', response.data)
-      this.user = response.data.results[0]
+      this.users = response.data.results
     }).catch(err=>{
       console.log('errr', err)
     })
