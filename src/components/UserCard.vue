@@ -1,10 +1,9 @@
 <template>
 <div class="user-card">
-    <img src="/img/70.jpg" class="user-photo">
+    <img v-bind:src="picture" class="user-photo">
     <p class="user-nickname">{{nickname}}</p>
     <p class="user-name">
-        Иван<br>
-        Иванович
+        {{name}}
     </p>
     <hr>
     <p class="user-info-item">
@@ -68,15 +67,26 @@
 }
 </style>
 <script>
+
 export default {
     props: ['user'],
     computed:{
-        addr(){
+        addr()
+        {
             let location = this.user.location
             return location.city + ', ' + location.street.name + ' ' + location.street.number
         },
-        nickname(){
+        nickname()
+        {
             return this.user.login.username
+        },
+        picture()
+        {
+            return this.user.picture.large
+        },
+        name()
+        {
+            return this.user.name.first + ' ' + this.user.name.last
         }
     }
 }

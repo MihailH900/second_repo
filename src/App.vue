@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <user-card v-for = "user in users" :user="user" :key = "user.email"> </user-card>
+    <UserCard v-for = "user in users" :user = "user" :key = "user.email"> </UserCard>
   </div>
 </template>
 
